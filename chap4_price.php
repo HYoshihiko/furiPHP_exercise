@@ -17,3 +17,4 @@ function displayMsg($name, $sum, $price){
 EOM;
     echo $msg;
 }
+

@@ -14,3 +14,4 @@ $item3 = trim(fgets(STDIN));
 $sum = add($item1, $item2, $item3);
 $price = totalTax($sum);
 displayMsg($name, $sum, $price);
+

@@ -13,3 +13,4 @@ function displayMsg($top, $bottom, $height, $area){
 EOM;
     echo $msg;
 }
+
