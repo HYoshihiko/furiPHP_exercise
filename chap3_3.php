@@ -11,4 +11,3 @@ foreach (range(1, 100) as $int) {
         print($int . " ");
     }
 }
-
