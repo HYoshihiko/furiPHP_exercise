@@ -1,10 +1,12 @@
 <?php
 
-function h($str) {
+function h($str)
+{
     return htmlspecialchars($str, ENT_QUOTES, "UTF-8");
 }
 
-function constellation($month, $day) {
+function constellation($month, $day)
+{
     $signs = [
         # 星座の名前          /星座始まりの月日            /星座終わりの月日  
         ["name" => "牡羊座", "period_start" => [3, 21], "period_end" => [4, 19]],
@@ -26,12 +28,9 @@ function constellation($month, $day) {
         $start_d = $sign["period_start"][1];
         $end_m = $sign["period_end"][0];
         $end_d = $sign["period_end"][1];
-        
-        if ($month == $start_m && $day >= $start_d) {
+
+        if ($month == $start_m && $day >= $start_d)
             return $sign["name"];
-        } else if ($end_m == $month && $end_d >= $day) {
-            return $sign["name"];
-        }
     }
 }
 
@@ -41,19 +40,30 @@ $day = filter_input(INPUT_GET, "day", FILTER_VALIDATE_INT);
 
 
 <!DOCTYPE html>
-<title>星座チェック</title>
-<h1>星座チェック</h1>
+<html>
 
-<?php if (empty($month) || empty($day)) :  ?>
-    <p>数字を入力してください</p>
-    <form method="get">
-        <label>月</label>
-        <input type="number" name="month" min="1" max="12" >
-        <label>日</label>
-        <input type="number" name="day" min="1" max="31" >
+<head>
+    <title>星座チェック</title>
+    <meta charset="UTF-8">
+</head>
 
-        <input type="submit" value="OK">
-    </form>
-<?php else : ?>
-    <p><?= h($month) ?>月<?= h($day) ?>日生まれは<?= constellation($month, $day) ?>です。</p>
-<?php endif; ?>
+<body>
+    <h1>星座チェック</h1>
+    <?php if (empty($month) || empty($day)) :  ?>
+        <p>数字を入力してください</p>
+        <form method="get">
+            <input type="number" name="month" min="1" max="12">
+            <label>月</label>
+            <input type="number" name="day" min="1" max="31">
+            <label>日</label>
+
+            <input type="submit" value="OK">
+        </form>
+    <?php else : ?>
+        <p><?= h($month) ?>月<?= h($day) ?>日生まれは<?= constellation($month, $day) ?>です。</p>
+    <?php endif; ?>
+
+</body>
+
+
+</html>
