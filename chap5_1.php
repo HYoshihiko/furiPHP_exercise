@@ -29,8 +29,9 @@ function constellation($month, $day)
         $end_m = $sign["period_end"][0];
         $end_d = $sign["period_end"][1];
 
-        if (($start_m == $month && $start_d <= $day) || ($end_m == $month && $end_d >= $day))
+        if (($start_m == $month && $start_d <= $day) || ($end_m == $month && $end_d >= $day)) {
             return $sign["name"];
+        }
     }
 }
 
